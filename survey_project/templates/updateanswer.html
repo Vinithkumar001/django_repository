@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update Survey Answer</title>
+</head>
+<body>
+    <h1>Update Survey Answer</h1>
+    <form method="POST" action="{% url 'update_answer' surveyid%}">
+        {% csrf_token %}
+        <label for="answer">Answer:</label>
+        <input type="text" name="answer" id="answer" value="{{ survey.answer }}">
+        <br>
+        <input type="submit" value="Update Answer">
+    </form>
+</body>
+</html>

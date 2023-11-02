@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Questions and Answers</title>
+</head>
+<body>
+    <h1>Questions and Answers</h1>
+    <ul>
+        {% for question_answer in question_answers %}
+            <li>
+                ID: {{ question_answer.survey_id }}, 
+                Title: {{ question_answer.title }}, 
+                Question: {{ question_answer.question }}
+                <ul>
+                    {% for answer in question_answer.answer %}
+                        <li>Answer: {{ answer }}</li>
+                    {% endfor %}
+                </ul>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
