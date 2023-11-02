@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Survey</title>
+</head>
+<body>
+    <h1>Create Survey</h1>
+    <form method="POST" action="{% url 'createsurvey' %}">
+        {% csrf_token %}
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" required><br><br>
+        <label for="question">Question:</label>
+        <textarea id="question" name="question" required></textarea><br><br>
+        <input type="submit" value="Create Survey">
+    </form>
+</body>
+</html>
