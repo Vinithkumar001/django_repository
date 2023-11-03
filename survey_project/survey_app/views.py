@@ -29,6 +29,7 @@ def update_survey(request,survey_id):
         survey.question=question
         survey.save()
     return render(request,'updatefile.html',{"survey":survey})
+def delete_all(request,survey_id):
     
     survey_ques=survey_question.objects.all()
     survey_ans=survey_answer.objects.all()
