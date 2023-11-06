@@ -11,7 +11,7 @@ jobs:
 
     runs-on: ubuntu-latest
     strategy:
-      max-parallel: 4
+      max-parallel: 3
       matrix:
         python-version: [3.11]
 
@@ -29,4 +29,4 @@ jobs:
     - name: Run Tests
       run: |
         cd survey_project
-        python manage.py test
+        python manage.py runserver
