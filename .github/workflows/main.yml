@@ -26,7 +26,7 @@ jobs:
          py -m pip install -r requirements.txt
      - name: Run test
        run: |
-         python manage.py runserver
+         python manage.py test
    
 
 
