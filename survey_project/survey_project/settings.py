@@ -82,7 +82,7 @@ DATABASES = {
         'NAME': 'CRUD_survey',
         'USER':'postgres',
         'PASSWORD':'Vinithk1234$',
-        'HOST' : 'database-1.cx9wqtijrjsg.ap-south-1.rds.amazonaws.com',
+        'HOST' : 'localhost',
         'PORT' :  '5432',
     }
 }
