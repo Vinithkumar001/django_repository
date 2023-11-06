@@ -23,7 +23,7 @@ urlpatterns = [
     
     path('create/', create_survey,name='createsurvey'),
     path('getall/', get_survey,name='add_question'),
-    path("update/<int:survey _id>",update_survey,name="updatesurvey"),
+    path("update/<int:survey_id>", update_survey, name="updatesurvey"),
     path("delete/<int:survey_id>",delete_survey),
     path('create_answer/<int:survey_id>',views.create_survey_answer,name='create_survey_answer'),
     path('update_answer/<int:surveyid>',views.update_answer,name="update_answer"),
