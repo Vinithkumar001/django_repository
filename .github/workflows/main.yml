@@ -15,9 +15,9 @@ jobs:
         matrix:
           python-version: [3.10,3.11,3.12]
      steps:
-     - uses: python/check-out@v3
+     - uses: python/checkout@v3
      - name: Set-up python ${{matrix.python-version}}
-     - uses: python/set-up@v3
+     - uses: python/setup-python@v3
        with:
            python-version: ${{matrix.python-verion}}
      - name: Install dependencies
