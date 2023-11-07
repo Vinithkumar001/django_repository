@@ -31,7 +31,7 @@ jobs:
       - name: Make migrations
         run: |
           cd survey_project
-          python manage.py makrmigrations
+          python manage.py makemigrations
 
       - name: Run tests
         run: |
