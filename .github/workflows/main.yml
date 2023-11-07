@@ -33,9 +33,7 @@ jobs:
         run: |
           cd survey_project
           python manage.py migrate
-      - name: static file collect 
-        run: |
-          python manage.py collectstatic --noinput
+      
       - name: Run server
         run: |
           python manage.py runserver
