@@ -35,6 +35,7 @@ jobs:
 
       - name: Run tests
         run: |
+          cd survey_project
           python manage.py migrate
       
       - name: Run server
