@@ -32,13 +32,6 @@ jobs:
         run: |
           cd survey_project
           python manage.py makemigrations
-
-      - name: Run tests
-        run: |
-          cd survey_project
           python manage.py migrate
-      
-      - name: Run server
-        run: |
           python manage.py runserver
         
