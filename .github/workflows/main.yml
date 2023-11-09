@@ -35,6 +35,7 @@ jobs:
       - name: Activate virtual environment
         run: |
           sudo systemctl status postgresql
+          sudo systemctl start postgresql
 
           source newvenv/Scripts/activate
       - name: Run database migrations
