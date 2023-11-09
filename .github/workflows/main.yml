@@ -40,14 +40,12 @@ jobs:
 
       - name: Activate virtual environment
         run: |
-          sudo systemctl status postgresql
-          sudo systemctl start postgresql
-
-          source newvenv/Scripts/activate
+            source newvenv/Scripts/activate
 
       - name: Run database migrations
         run: |
           cd survey_project          
+          python manage.py makemigrations
           python manage.py migrate
 
       - name: Collect static files
