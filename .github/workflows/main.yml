@@ -33,7 +33,7 @@ jobs:
 
       - name: Run database migrations
         run: |
-          ls -lrt
+          cd survey_project
           python manage.py migrate
 
       - name: Run tests
