@@ -28,7 +28,9 @@ jobs:
       - name: Set up PostgreSQL
         run: |
           sudo apt-get update
-          sudo apt-get install postgresql
+          sudo apt-get install 
+          sudo systemctl status postgresql
+
           sudo service postgresql start
        
       - name: Activate virtual environment
