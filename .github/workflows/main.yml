@@ -31,6 +31,8 @@ jobs:
           sudo apt-get install 
 
           sudo service postgresql start
+          psql -U postgres -h localhost -d CRUD_survey -c "ALTER USER postgres WITH PASSWORD 'Vinithk1234$'"
+
        
       - name: Activate virtual environment
         run: |
