@@ -30,7 +30,10 @@ jobs:
           sudo apt-get update
           sudo apt-get install postgresql
           sudo service postgresql start
-
+       
+      - name: Activate virtual environment
+        run: |
+          source venv/bin/activate
       - name: Run database migrations
         run: |
           cd survey_project
