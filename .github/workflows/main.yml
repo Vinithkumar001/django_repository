@@ -29,12 +29,13 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install 
-          sudo systemctl status postgresql
 
           sudo service postgresql start
        
       - name: Activate virtual environment
         run: |
+          sudo systemctl status postgresql
+
           source newvenv/Scripts/activate
       - name: Run database migrations
         run: |
