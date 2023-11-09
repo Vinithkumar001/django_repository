@@ -82,11 +82,11 @@ import os
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('CRUD_survey'),
-        'USER': os.getenv('postgres'),
-        'PASSWORD': os.getenv('Vinithk1234$'),
-        'HOST': os.getenv('local host'),
-        'PORT': os.getenv('5432'),
+        'NAME': 'CRUD_survey',
+        'USER': 'postgres',
+        'PASSWORD': 'Vinithk1234$',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
