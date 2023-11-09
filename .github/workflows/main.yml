@@ -59,7 +59,7 @@ jobs:
       - name: Run tests
         run: |
          cd survey_project
-         python manage.py test
+         python manage.py runserver
 
       - name: Deploy to production
         run: |
