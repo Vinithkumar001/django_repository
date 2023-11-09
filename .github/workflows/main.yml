@@ -38,7 +38,8 @@ jobs:
         run: |
           cd survey_project
           python -m pip install Django
-
+          python manage.py make migrations
+          
           python manage.py migrate
 
       - name: Run tests
