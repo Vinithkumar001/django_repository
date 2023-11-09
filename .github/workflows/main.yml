@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:  # Define environment variables here
-      POSTGRES_USER: postgres
+      POSTGRES_USER: "postgres"
       POSTGRES_PASSWORD: "Vinithk1234$"
 
       POSTGRES_DB: CRUD_survey
