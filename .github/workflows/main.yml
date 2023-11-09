@@ -41,10 +41,7 @@ jobs:
           source newvenv/Scripts/activate
       - name: Run database migrations
         run: |
-          cd survey_project
-          python -m pip install Django
-          
-          
+          cd survey_project          
           python manage.py migrate
 
       - name: Run tests
