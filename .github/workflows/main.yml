@@ -1,47 +1,41 @@
-name: Django project
-run-name: Django_deploy
+name: Django Deployment
 
 on:
   push:
-    branches: ["main"]
-  pull_request:
-    branches: ["main"]
+    branches:
+      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    strategy:
-      max-parallel: 4
-      matrix:
-        python-version: [3.11]
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Set up Python ${{ matrix.python-version }}
+      - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: ${{ matrix.python-version }}
+          python-version: 3.x
 
-      - name: Install project dependencies
+      - name: Install dependencies
         run: |
-          sudo apt update
-          sudo apt upgrade -y
-          sudo apt install -y postgresql
-          sudo systemctl start postgresql
-          sudo systemctl enable postgresql
-          sudo -u postgres psql -c "ALTER USER postgres WITH PASSWORD 'Vinithk1234'"
           python -m pip install --upgrade pip
-          python -m pip install -r requirements.txt
+          pip install -r requirements.txt
 
-      - name: Make migrations
+      - name: Set up PostgreSQL
         run: |
-          cd survey_project
-          python manage.py makemigrations
-          python manage.py migrate
+          sudo apt-get update
+          sudo apt-get install postgresql
+          sudo service postgresql start
 
-      - name: Run Django server
+      - name: Run database migrations
+        run: python manage.py migrate
+
+      - name: Run tests
+        run: python manage.py test
+
+      - name: Deploy to production
         run: |
-          cd survey_project
-          python manage.py runserver 0:8000
+          # Add your deployment commands here
+          # For example, you can use SSH to connect to your production server and deploy the project
