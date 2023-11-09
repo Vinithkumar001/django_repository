@@ -33,7 +33,7 @@ jobs:
        
       - name: Activate virtual environment
         run: |
-          source venv/bin/activate
+          source newvenv/bin/activate
       - name: Run database migrations
         run: |
           cd survey_project
