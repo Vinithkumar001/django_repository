@@ -26,7 +26,7 @@ jobs:
 
       - name: Install project dependencies
         run: |
-            apt list --upgradable             
+            sudo apt update           
             sudo apt install postgresql              
             sudo nano /etc/postgresql/16/main/postgresql.conf            
             sudo service postgresql restart            
