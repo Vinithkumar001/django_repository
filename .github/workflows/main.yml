@@ -11,7 +11,7 @@ jobs:
 
     env:  # Define environment variables here
       POSTGRES_USER: "postgres"
-      POSTGRES_PASSWORD: ${{DB_PASSWORD}}
+      POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
 
       POSTGRES_DB: CRUD_survey
 
