@@ -43,24 +43,30 @@ jobs:
 
           sudo service postgresql start
 
-       
       - name: Activate virtual environment
         run: |
           sudo systemctl status postgresql
           sudo systemctl start postgresql
 
           source newvenv/Scripts/activate
+
       - name: Run database migrations
         run: |
           cd survey_project          
           python manage.py migrate
 
-      - name: Run tests
+      - name: Collect static files
         run: |
-         cd survey_project
-         python manage.py runserver
+          cd survey_project
+          python manage.py collectstatic --noinput
 
-      - name: Deploy to production
+      - name: Install Gunicorn
         run: |
-          # Add your deployment commands here
-          # For example, you can use SSH to connect to your production server and deploy the project
+          python -m pip install gunicorn
+
+      - name: Run Django application using Gunicorn
+        run: |
+          cd survey_project
+          gunicorn survey_project.wsgi:application
+
+      # Optional: You can add additional steps for database backups, environment setup, etc.
