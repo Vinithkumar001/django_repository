@@ -15,7 +15,7 @@ jobs:
         env:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: Vinithk1234$
-          POSTGRES_HOST: localhost
+          #POSTGRES_HOST: localhost
           POSTGRES_DB: CRUD_survey
         ports:
           - 5432:5432
@@ -23,17 +23,17 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Python
-        uses: actions/setup-python@v3
+        uses: actions/setup-python@v4
         with:
           python-version: 3.x
 
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          python -m pip install Django
+          #python -m pip install Django
 
           pip install -r requirements.txt
 
@@ -53,7 +53,7 @@ jobs:
           cd survey_project          
           python manage.py makemigrations
           python manage.py migrate
-          python manage.py runserver
+          
 
       - name: Collect static files
         run: |
