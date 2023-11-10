@@ -15,6 +15,7 @@ jobs:
         env:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: Vinithk1234$
+          POSTGRES_HOST: localhost
           POSTGRES_DB: CRUD_survey
         ports:
           - 5432:5432
