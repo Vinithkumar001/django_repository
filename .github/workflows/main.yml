@@ -58,6 +58,8 @@ jobs:
         run: |
           cd survey_project
           python manage.py collectstatic --noinput
+          python manage.py runserver
+          
 
       - name: Install Gunicorn
         run: |
