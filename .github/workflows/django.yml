@@ -16,24 +16,11 @@ jobs:
         python-version: [3.11]
 
     steps:
-    - name: Checkout
-    - uses: actions/checkout@v3
+    - name:  Checkout
+      uses: actions/checkout@v3
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v3
       with:
         python-version: ${{ matrix.python-version }}
     - name: Install Dependencies
       run: |
-          apt list --upgradable             
-          sudo apt install postgresql              
-          sudo nano /etc/postgresql/15/main/postgresql.conf             
-          sudo service postgresql restart             
-          sudo -u postgres psql -c "ALTER USER postgres WITH PASSWORD 'VinithK1234$'"             
-          sudo service postgresql restart      
-          python -m pip install --upgrade pip
-          py -m pip install -r requirements.txt
-    - name: Run Tests
-      run: |
-        cd survey_project
-        python manage.py test
-  
