@@ -29,7 +29,9 @@ jobs:
             python manage.py collectstatic --noinput
 
       - name: Migrate Database
-        run: python manage.py migrate
+        run: |
+           cd survey_project
+           python manage.py migrate
 
       - name: Restart Gunicorn (Assuming you are using Gunicorn as your server)
         run: sudo systemctl restart gunicorn.service
