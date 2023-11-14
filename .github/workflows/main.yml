@@ -1,31 +1,47 @@
-name: Django project
-run-name: Django_deploy
+name: Django Deployment
 
 on:
   push:
-    branches: ["main"]
-  pull_request:
-    branches: ["main"]
+    branches:
+      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    strategy:
-      max-parallel: 4
-      matrix:
-        python-version: [3.11]
+
+    services:
+      postgres:
+        image: postgres:latest
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: Vinithk1234$
+          #POSTGRES_HOST: localhost
+          POSTGRES_DB: CRUD_survey
+        ports:
+          - 5432:5432
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
 
     steps:
       - name: Checkout code
+<<<<<<< HEAD
         uses: actions/checkout@v2
 
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v2
         with:
           python-version: ${{ matrix.python-version }}
+=======
+        uses: actions/checkout@v4
 
-      - name: Install project dependencies
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.x
+>>>>>>> 5173383a20e14dc113748d7e6d89225a516dd7ff
+
+      - name: Install dependencies
         run: |
+<<<<<<< HEAD
           sudo apt update
           sudo apt upgrade -y
           sudo apt install -y postgresql
@@ -36,12 +52,53 @@ jobs:
           python -m pip install -r requirements.txt
 
       - name: Make migrations
+=======
+          python -m pip install --upgrade pip
+          python -m pip install Django
+          python -m pip install psycopg2
+          #pip install -r requirements.txt
+
+      - name: Set up PostgreSQL
+>>>>>>> 5173383a20e14dc113748d7e6d89225a516dd7ff
         run: |
-          cd survey_project
+          sudo apt-get update
+          sudo apt-get install
+          sudo apt-get install postgresql 
+          
+
+          sudo service postgresql start
+
+      - name: Activate virtual environment
+        run: |
+            source newvenv/Scripts/activate
+
+      - name: Run database migrations
+        run: |
+          cd survey_project          
           python manage.py makemigrations
           python manage.py migrate
+<<<<<<< HEAD
 
       - name: Run Django server
         run: |
           cd survey_project
           python manage.py runserver 0:8000
+=======
+          
+
+      - name: Collect static files
+        run: |
+          cd survey_project
+          python manage.py collectstatic --noinput
+          
+
+      - name: Install Gunicorn
+        run: |
+          python -m pip install gunicorn
+
+      - name: Run Django application using Gunicorn
+        run: |
+          cd survey_project
+          gunicorn survey_project.wsgi:application 
+          
+>>>>>>> 5173383a20e14dc113748d7e6d89225a516dd7ff
