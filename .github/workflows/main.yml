@@ -23,7 +23,7 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: 3.x
-      - name: Postgresql setuo    
+      - name: Postgresql setups    
         uses: harmon758/postgresql-action@v1
         with:
           postgresql version: '11'
@@ -31,13 +31,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-      - name: Set up Environment Variables
-        run: |
-          echo "export DB_NAME=DB_NAME" >> $GITHUB_ENV
-          echo "export DB_USER=DB_USER" >> $GITHUB_ENV
-          echo "export DB_PASSWORD=DB_PASSWORD" >> $GITHUB_ENV
-          echo "export DB_HOST=DB_HOST" >> $GITHUB_ENV
-          echo "export DB_PORT=DB_PORT" >> $GITHUB_ENV
+      
       - name: Collect Static Files
         run: |
           cd survey_project
