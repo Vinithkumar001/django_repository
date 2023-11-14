@@ -9,6 +9,10 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
 
+    env:
+      DJANGO_SETTINGS_MODULE: "survey_project.settings"  # Set your Django settings module here
+      SECRET_KEY: django-insecure--dg7-bc48jm1&p2c1y6p_%y*j!&qzjk3xz1-k!yy@-z5r4b0u3  # Store your secret key in GitHub Secrets
+
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
@@ -25,18 +29,14 @@ jobs:
 
       - name: Collect Static Files
         run: |
-            cd survey_project
-            python manage.py collectstatic --noinput
+          cd survey_project
+          python manage.py collectstatic --noinput
 
       - name: Migrate Database
         run: |
-           cd survey_project
-           python manage.py migrate
+          cd survey_project
+          python manage.py migrate
 
       - name: Restart Gunicorn (Assuming you are using Gunicorn as your server)
         run: sudo systemctl restart gunicorn.service
-
-      # Add any additional steps for your deployment process
-
-      # You might need to restart your web server or perform other actions based on your setup.
 
