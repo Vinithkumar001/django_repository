@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure--dg7-bc48jm1&p2c1y6p_%y*j!&qzjk3xz1-k!yy@-z5r4b0u3
 DEBUG = True
 
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["localhost","127.0.0.1"]
 
 
 
@@ -77,7 +77,6 @@ WSGI_APPLICATION = 'survey_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-import os
 
 DATABASES = {
     'default': {
