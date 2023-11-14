@@ -17,27 +17,31 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
 
       - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v1
-        with:   
+        uses: actions/setup-python@v2
+        with:
           python-version: ${{ matrix.python-version }}
 
       - name: Install project dependencies
         run: |
-            apt list --upgradable             
-            sudo apt install postgresql              
-            sudo nano /etc/postgresql/16/main/postgresql.conf            
-            sudo service postgresql restart            
-            sudo -u postgres psql -c "ALTER USER postgres WITH PASSWORD '12345'"              
-            sudo service postgresql restart      
-            python -m pip install --upgrade pip
-            python -m pip install -r requirements.txt
+          sudo apt update
+          sudo apt upgrade -y
+          sudo apt install -y postgresql
+          sudo systemctl start postgresql
+          sudo systemctl enable postgresql
+          sudo -u postgres psql -c "ALTER USER postgres WITH PASSWORD 'Vinithk1234'"
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+
       - name: Make migrations
         run: |
           cd survey_project
           python manage.py makemigrations
           python manage.py migrate
-          python manage.py runserver  0.0.0.0:6000
-        
+
+      - name: Run Django server
+        run: |
+          cd survey_project
+          python manage.py runserver 0:8000
