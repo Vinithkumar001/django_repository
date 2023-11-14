@@ -7,7 +7,7 @@ on:
 
 jobs:      
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     services:
       postgres:
@@ -15,7 +15,6 @@ jobs:
         env:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: Vinithk1234$
-          #POSTGRES_HOST: localhost
           POSTGRES_DB: CRUD_survey
         ports:
           - 5432:5432
@@ -39,29 +38,24 @@ jobs:
 
       - name: Set up PostgreSQL
         run: |
-          sudo apt-get update
-          sudo apt-get install
-          sudo apt-get install postgresql 
-          
-
-          sudo service postgresql start
+          # Note: The following commands might need to be adjusted based on the specifics of your Windows environment.
+          # Ensure that PostgreSQL is installed and the necessary configurations are made.
+          # For example, you might need to start the PostgreSQL service.
 
       - name: Activate virtual environment
         run: |
-            source newvenv/Scripts/activate
+            .\newvenv\Scripts\Activate
 
       - name: Run database migrations
         run: |
-          cd survey_project          
+          cd survey_project
           python manage.py makemigrations
           python manage.py migrate
-          
 
       - name: Collect static files
         run: |
           cd survey_project
           python manage.py collectstatic --noinput
-          
 
       - name: Install Gunicorn
         run: |
@@ -71,5 +65,3 @@ jobs:
         run: |
           cd survey_project
           gunicorn survey_project.wsgi:application 
-          
-  
