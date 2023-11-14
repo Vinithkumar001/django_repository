@@ -41,7 +41,7 @@ jobs:
 
       - name: Activate virtual environment
         run: |
-          source newvenv/bin/activate  # Change for Unix-like systems
+          source newvenv/Scripts/activate  # Change for Unix-like systems
           # OR
           # call newvenv\Scripts\activate  # Change for Windows
 
