@@ -72,3 +72,4 @@ jobs:
           cd survey_project
           gunicorn survey_project.wsgi:application 
           
+  
