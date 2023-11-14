@@ -7,10 +7,10 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-latests
+    runs-on: ubuntu-latest
 
     env:
-      DB_NAME: 'CRUD_survey'
+      DB_NAME: 'CRUD_survey'   
       DB_USER: 'postgres'
       DB_PASSWORD: 'Vinithk1234$'
       DB_HOST: 'localhost'
