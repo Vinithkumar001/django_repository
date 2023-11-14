@@ -40,7 +40,7 @@ jobs:
           echo "export DB_HOST=DB_HOST" >> $GITHUB_ENV
           echo "export DB_PORT=DB_PORT" >> $GITHUB_ENV
       - name: Collect Static Files
-        run: |
+        run: |    
           cd survey_project
           python manage.py collectstatic --noinput
     
