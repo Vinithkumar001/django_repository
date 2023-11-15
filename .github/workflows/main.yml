@@ -41,14 +41,14 @@ jobs:
 
       - name: Set up PostgreSQL
         run: |  
-          sudo apt-get update
-          sudo apt-get install
-          sudo apt-get install -y libpq-dev postgresql       
+          sudo apt update
+          sudo apt install
+          sudo apt install -y libpq-dev postgresql       
           sudo systemctl start postgresql
           
           sudo systemctl status postgresql
-          sudo apt-get --purge remove postgresql
-          sudo apt-get install postgresql
+          sudo apt --purge remove postgresql
+          sudo apt install postgresql
 
 
       - name: Activate virtual environment
