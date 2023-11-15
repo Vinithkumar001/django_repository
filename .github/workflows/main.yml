@@ -70,4 +70,4 @@ jobs:
       - name: Run Django application using Gunicorn
         run: |
           cd survey_project
-          gunicorn -w 4 -b 0.0.0.0:8000 survey_project.wsgi:application
+          gunicorn  survey_project.wsgi:application
