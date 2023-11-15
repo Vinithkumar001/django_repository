@@ -50,7 +50,7 @@ jobs:
 
       - name: Activate virtual environment
         run: |
-            source newvenv/bin/activate
+            source newvenv/Scripts/activate
 
       - name: Run database migrations
         run: |
