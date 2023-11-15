@@ -45,7 +45,9 @@ jobs:
           sudo apt-get install
           sudo apt-get install -y libpq-dev postgresql       
           sudo service postgresql start
-          sudo service postgresql status
+          
+          sudo systemctl status postgresql
+
 
       - name: Activate virtual environment
         run: |
