@@ -4,7 +4,7 @@ on:
   push:    
     branches:     
       - main
-   
+    
 jobs:      
   build:    
     runs-on: ubuntu-latest
@@ -42,15 +42,12 @@ jobs:
         run: |  
           sudo apt-get update
           sudo apt-get install
-          sudo apt-get install libpq-dev
-
-          sudo apt-get install postgresql 
-          
-
+          sudo apt-get install libpq-dev postgresql       
           sudo service postgresql start
 
       - name: Activate virtual environment
         run: |
+            python -m venv newvenv
             source newvenv/Scripts/activate
 
       - name: Run database migrations
