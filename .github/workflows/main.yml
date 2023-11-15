@@ -47,6 +47,8 @@ jobs:
           sudo systemctl start postgresql
           
           sudo systemctl status postgresql
+          sudo apt-get --purge remove postgresql
+          sudo apt-get install postgresql
 
 
       - name: Activate virtual environment
