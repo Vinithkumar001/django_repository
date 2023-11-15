@@ -2,7 +2,7 @@ name: Django Deployment
 
 on:
   push:    
-    branches:
+    branches:    
       - main
 
 jobs:      
