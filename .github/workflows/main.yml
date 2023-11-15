@@ -41,6 +41,8 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install
+          sudo apt-get install libpq-dev
+
           sudo apt-get install postgresql 
           
 
