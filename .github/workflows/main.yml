@@ -43,8 +43,9 @@ jobs:
         run: |  
           sudo apt-get update
           sudo apt-get install
-          sudo apt-get install libpq-dev postgresql       
+          sudo apt-get install -y libpq-dev postgresql       
           sudo service postgresql start
+          docker exec -i postgres psql -U postgres -c "CREATE ROLE root LOGIN SUPERUSER;"
 
       - name: Activate virtual environment
         run: |
