@@ -14,7 +14,7 @@ jobs:
         image: postgres:latest
         env:
           POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: Vinithk123$
+          POSTGRES_PASSWORD: Vinithk1234$
           POSTGRES_DB: CRUD_survey
         ports:
           - 5432:5432
