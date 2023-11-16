@@ -48,7 +48,7 @@ jobs:
       - name: Run database migrations
         run: |
           cd survey_project
-          python manage.py makemigrations
+          #python manage.py makemigrations
           python manage.py migrate
 
       - name: Collect static files
