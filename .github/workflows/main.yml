@@ -53,6 +53,7 @@ jobs:
 
       - name: Collect static files
         run: |
+          cd survey_project
           python manage.py collectstatic --noinput
 
       - name: Install Gunicorn
