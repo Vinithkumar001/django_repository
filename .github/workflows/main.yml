@@ -67,4 +67,66 @@ jobs:
       - name: Run Django application using Gunicorn
         run: |
           cd survey_project
-          gunicorn  survey_project.wsgi:application  --log-level=debug
+name: Django Deployment
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:latest
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: Vinithk1234$
+          POSTGRES_DB: CRUD_survey
+        ports:
+          - 5432:5432
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.x
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Set up PostgreSQL
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libpq-dev
+          sudo service postgresql start
+
+      - name: Create and activate virtual environment
+        run: |
+          python -m venv venv
+          source venv/bin/activate
+
+      - name: Run database migrations
+        run: |
+          python manage.py makemigrations
+          python manage.py migrate
+
+      - name: Collect static files
+        run: |
+          python manage.py collectstatic --noinput
+
+      - name: Install Gunicorn
+        run: |
+          pip install gunicorn
+
+      - name: Run Django application using Gunicorn
+        run: |
+          gunicorn survey_project.wsgi:application --bind 0.0.0.0:8000          gunicorn  survey_project.wsgi:application  --log-level=debug
