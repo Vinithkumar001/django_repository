@@ -35,11 +35,12 @@ jobs:
           pip install -r requirements.txt
 
       - name: Set up PostgreSQL
-        run: |
+        run: | 
           sudo apt-get update
           sudo apt-get install -y libpq-dev
           sudo apt-get install postgresql -y
           sudo service postgresql start
+          sudo service postgresql status
 
       - name: Create and activate virtual environment
         run: |
