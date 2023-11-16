@@ -40,9 +40,7 @@ jobs:
       - name: Set up PostgreSQL
         run: |
           sudo apt-get update
-          sudo apt-get install
           sudo apt-get install libpq-dev
-
           sudo apt-get install postgresql -y
           
       - name: PostgreSQL start
@@ -59,12 +57,7 @@ jobs:
           cd survey_project          
           python manage.py makemigrations
           python manage.py migrate
-          
-
-      - name: Collect static files 
-        run: |
-          cd survey_project
-          python manage.py collectstatic --noinput
+        
             
 
       - name: Install Gunicorn
