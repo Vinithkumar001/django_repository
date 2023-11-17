@@ -45,7 +45,8 @@ jobs:
         run: |
           cd survey_project
           export DATABASE_URL= "postgresql://postgres:Vinithk1234$@localhost:5432/CRUD_survey"
-          python manage.py makemigrations
+
+          #python manage.py makemigrations
           python manage.py migrate
 
       - name: Collect static files
