@@ -28,10 +28,7 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: 3.x
-      - name: Postgresql Setup
-        uses: harmon758/postgresql-action@v1
-        with:
-           postgresql version: '15'
+    
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
@@ -47,7 +44,8 @@ jobs:
       - name: Run database migrations
         run: |
           cd survey_project
-          #python manage.py makemigrations
+          export DATABASE_URL= "postgresql://postgres:Vinithk1234$@localhost:5432/CRUD_survey"
+          python manage.py makemigrations
           python manage.py migrate
 
       - name: Collect static files
